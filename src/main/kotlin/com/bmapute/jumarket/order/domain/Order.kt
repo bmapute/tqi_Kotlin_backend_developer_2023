@@ -10,11 +10,11 @@ import java.util.*
 class Order constructor(
     id: UUID,
     orderItems: MutableList<OrderItem>,
-    var status: OrderStatus? = OrderStatus.CREATED,
-    val createAt: LocalDateTime?,
+    var status: OrderStatus,
+    var createAt: LocalDateTime?,
     paymentType: PaymentType,
 ) {
-    private val id: UUID
+     val id: UUID
     var orderItems: MutableList<OrderItem>
     private var totalAmount: BigDecimal
     private val paymentType: PaymentType
@@ -29,17 +29,6 @@ class Order constructor(
                 .fold(BigDecimal.ZERO, BigDecimal::add)
         this.paymentType = paymentType
     }
-
-    constructor(
-        idUUID: UUID,
-        product: Product,
-        price: BigDecimal?,
-        quantity: Double,
-        paymentType: PaymentType
-    ) : this(
-        idUUID, arrayListOf(OrderItem(product.id, quantity, price ?: product.price)),
-        null, null, paymentType
-    )
 
     fun addOrderItem(product: Product, price: BigDecimal?, quantity: Double) {
         validateState()
