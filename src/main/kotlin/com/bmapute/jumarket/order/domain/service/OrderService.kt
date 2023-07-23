@@ -12,7 +12,7 @@ interface OrderService {
 
     fun createOrder(orderItems:MutableList<OrderItem>,status: OrderStatus?,paymentType: PaymentType): UUID?
     fun createOrder(product: Product,price:BigDecimal?,quantity:Double,orderStatus: OrderStatus?,paymentType: PaymentType){
-        createOrder(mutableListOf(OrderItem(product.id,quantity,price?:product.price)),orderStatus,paymentType)
+        createOrder(mutableListOf(OrderItem(product.id!!,quantity,price?:product.price)),orderStatus,paymentType)
     }
 
     fun addOrderProduct(id: UUID, product: Product,price: BigDecimal?,quantity: Double)

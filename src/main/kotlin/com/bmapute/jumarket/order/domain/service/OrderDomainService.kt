@@ -14,15 +14,15 @@ class OrderDomainService(private val repository: OrderRepository) : OrderService
     override fun addOrderProduct(id: UUID, product: Product, price: BigDecimal?, quantity: Double) {
         getOrder(id)?.apply {
             addOrderItem(product, price ?: product.price, quantity)
-        }.let { repository.save(it) }
+        }.let { repository.save(it!!) }
     }
 
     override fun completeOrder(id: UUID) {
-        getOrder(id)?.apply { complete()}.let { repository.save(it) }
+        getOrder(id)?.apply { complete()}.let { repository.save(it!!) }
     }
 
     override fun deleteProduct(id: UUID, productId: Long) {
-        getOrder(id)?.apply { removeOrderItem(productId) }.let { repository.save(it) }
+        getOrder(id)?.apply { removeOrderItem(productId) }.let { repository.save(it!!) }
     }
 
     private fun getOrder(id: UUID) =

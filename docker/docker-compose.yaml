@@ -1,0 +1,55 @@
+#version: '3.5'
+#
+#
+#services:
+#  postgres:
+#    container_name: postgres_demo
+#    image: postgres:latest
+#    environment:
+#      POSTGRES_DB: tqi_order
+#      POSTGRES_USER: bmapute
+#      POSTGRES_PASSWORD: 12378(#
+#      PGDATA: /data/postgres
+#    volumes:
+#      - postgres-db:/data/postgres
+#    ports:
+#      - "5432:5432"
+#
+#
+#volumes:
+#  postgres-db:
+#    driver: local
+
+version: '3.2'
+services:
+  postgres-tqi-order:
+    image: postgres:12-alpine
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      ALLOW_IP_RANGE: 0.0.0.0/0
+    ports:
+      - "5432:5432"
+    volumes:
+      - pdb12:/var/lib/postgresql/data
+    networks:
+      - postgres-compose-network
+
+#  pgadmin-tqi-order:
+#    image: dpage/pgadmin4
+#    environment:
+#      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+#      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+#    ports:
+#      - "80:80"
+#    depends_on:
+#      - postgres-tqi-order
+#    networks:
+#      - postgres-compose-network
+
+volumes:
+  pdb12:
+networks:
+  postgres-compose-network:
+    driver: bridge

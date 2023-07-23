@@ -1,0 +1,21 @@
+spring:
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: deferred
+  jpa:
+    open-in-view: false
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+  profiles:
+    default: dev
+
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+server:
+  servlet:
+    session:
+      cookie:
+        http-only: true
