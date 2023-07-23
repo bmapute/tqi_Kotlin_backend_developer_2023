@@ -16,8 +16,8 @@ class Order constructor(
 ) {
      val id: UUID
     var orderItems: MutableList<OrderItem>
-    private var totalAmount: BigDecimal
-    private val paymentType: PaymentType
+     var totalAmount: BigDecimal
+     val paymentType: PaymentType
 
     private val m = MathContext(4)
 
@@ -33,7 +33,7 @@ class Order constructor(
     fun addOrderItem(product: Product, price: BigDecimal?, quantity: Double) {
         validateState()
         validateProduct(product)
-        this.orderItems.add(OrderItem(product.id, quantity, price))
+        this.orderItems.add(OrderItem(product.id, quantity, price?:product.price))
         totalAmount = totalAmount.add(price ?: product.price)
     }
 
