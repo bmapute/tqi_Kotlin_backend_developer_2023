@@ -22,7 +22,7 @@ data class CategoryEntity(
     fun toCategory()=Category(id!!,name)
     companion object{
         fun from(category: Category): CategoryEntity {
-          return CategoryEntity(category.id,category.name)
+          return CategoryEntity(category.id,category.name?:"")
         }
     }
 

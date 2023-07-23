@@ -7,4 +7,5 @@ interface CategoryService {
     fun findAll():List<Category>
     fun update(id:Long,category: Category): Category
     fun delete(id:Long)
+    fun find(id:Long):Category?
 }
