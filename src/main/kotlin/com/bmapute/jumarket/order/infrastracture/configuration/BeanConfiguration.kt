@@ -12,18 +12,12 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class BeanConfiguration {
     @Bean
-    fun orderService(repository: OrderRepository): OrderDomainService {
-        return OrderDomainService(repository)
-    }
+    fun orderService(repository: OrderRepository)= OrderDomainService(repository)
 
     @Bean
-    fun categoryService(repository: CategoryRepository): CategoryDomainService {
-        return CategoryDomainService(repository)
-    }
+    fun categoryService(repository: CategoryRepository)= CategoryDomainService(repository)
 
     @Bean
-    fun ProductService(repository: ProductRepository): ProductDomainService {
-        return ProductDomainService(repository)
-    }
+    fun ProductService(repository: ProductRepository)= ProductDomainService(repository)
 
 }
