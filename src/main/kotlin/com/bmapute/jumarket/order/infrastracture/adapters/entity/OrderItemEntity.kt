@@ -7,8 +7,8 @@ import java.math.BigDecimal
 @Entity
 @Table(name = "order_item")
 data class OrderItemEntity(
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "product_id")
+//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "product_id")
     val productId: Long,
     var quantity:Double,
     var price: BigDecimal,

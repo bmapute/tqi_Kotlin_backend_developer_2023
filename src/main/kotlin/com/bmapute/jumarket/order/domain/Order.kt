@@ -33,7 +33,7 @@ class Order constructor(
     fun addOrderItem(product: Product, price: BigDecimal?, quantity: Double) {
         validateState()
         validateProduct(product)
-        this.orderItems.add(OrderItem(product.id, quantity, price?:product.price))
+        this.orderItems.add(OrderItem(product.id!!, quantity, price?:product.price))
         totalAmount = totalAmount.add(price ?: product.price)
     }
 
