@@ -11,4 +11,5 @@ interface ProductRepository {
     fun update(product: Product):Product
 
     fun delete(id:Long)
+    fun findAll(): List<Product>
 }

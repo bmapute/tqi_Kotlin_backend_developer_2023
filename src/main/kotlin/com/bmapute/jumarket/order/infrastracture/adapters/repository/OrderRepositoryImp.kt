@@ -10,10 +10,11 @@ import java.util.*
 class OrderRepositoryImp(private val jpaRepository: SpringDataJpaOrderRepository) : OrderRepository {
     override fun findById(id: UUID): Optional<Order> {
         val ob = jpaRepository.findById(id)
-        return if (jpaRepository.findById(id).isPresent) Optional.of(ob.get().toOrder()) else Optional.empty()
+        return if (jpaRepository.findById(id).isPresent)
+            Optional.of(ob.get().toOrder()) else Optional.empty()
     }
 
-    override fun save(order: Order): Order {
-        return jpaRepository.save(OrderEntity.from(order)).toOrder()
-    }
+    override fun save(order: Order) =
+        jpaRepository.save(OrderEntity.from(order)).toOrder()
+
 }

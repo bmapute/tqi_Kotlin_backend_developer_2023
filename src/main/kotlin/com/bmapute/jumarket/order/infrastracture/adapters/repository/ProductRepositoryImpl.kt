@@ -17,4 +17,5 @@ class ProductRepositoryImpl(private val jpaRepository: SpringDataJpaProductRepos
     override fun update(product: Product)=jpaRepository.save(ProductEntity.from(product)).toProduct()
 
     override fun delete(id: Long)=jpaRepository.deleteById(id)
+    override fun findAll() =jpaRepository.findAll().map { it.toProduct() }
 }

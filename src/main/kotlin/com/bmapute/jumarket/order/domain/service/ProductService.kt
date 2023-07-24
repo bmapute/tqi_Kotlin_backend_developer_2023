@@ -7,4 +7,5 @@ interface ProductService {
     fun detail(id:Long):Product?
     fun update(id:Long,product: Product):Product
     fun delete(id:Long)
+    fun getProducts(): List<Product>
 }
