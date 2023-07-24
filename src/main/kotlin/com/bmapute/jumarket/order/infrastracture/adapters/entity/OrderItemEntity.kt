@@ -9,11 +9,14 @@ import java.math.BigDecimal
 data class OrderItemEntity(
 //    @ManyToOne(fetch = FetchType.LAZY, optional = false)
 //    @JoinColumn(name = "product_id")
+    @Column(name = "product_id")
     val productId: Long,
+    @Column(name = "quantity")
     var quantity:Double,
+    @Column(name = "price")
     var price: BigDecimal,
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
      var id: Long? = null
 )

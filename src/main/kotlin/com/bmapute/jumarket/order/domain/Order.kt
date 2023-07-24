@@ -30,23 +30,22 @@ class Order constructor(
         this.paymentType = paymentType
     }
 
-    fun addOrderItem(product: Product, price: BigDecimal?, quantity: Double) {
+    fun addOrderItem(productId: Long, price: BigDecimal, quantity: Double) {
         validateState()
-        validateProduct(product)
-        this.orderItems.add(OrderItem(product.id!!, quantity, price?:product.price))
-        totalAmount = totalAmount.add(price ?: product.price)
+        this.orderItems.add(OrderItem(productId, quantity, price))
+        this.totalAmount= this.totalAmount.add(price,m)
     }
 
     fun removeOrderItem(idProduct: Long) {
         validateState()
-        val orderItem: OrderItem = getOrderItem(idProduct)
-        orderItems.remove(orderItem)
-        totalAmount = totalAmount.subtract(orderItem.price)
+        val orderItem = getOrderItem(idProduct)
+       this.orderItems.remove(orderItem)
+        this.totalAmount = this.totalAmount.subtract(orderItem.price,m)
     }
 
-    private fun getOrderItem(idProduct: Long) = orderItems.stream().filter {
+    private fun getOrderItem(idProduct: Long) = this.orderItems.stream().filter {
         it.productId == idProduct
-    }.findFirst().orElseThrow { DomainException("Product with $idProduct doesn't exist.") }
+    }.findFirst().orElseThrow { DomainException("Product with $idProduct doesn't found.") }
 
 
     fun complete() {
@@ -56,9 +55,6 @@ class Order constructor(
 
     private fun validateState() = if (OrderStatus.COMPLETED == status)
         throw DomainException("The order is in completed state.") else null
-
-    private fun validateProduct(product: Product?) = product ?: throw DomainException("The product cannot be null.")
-
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
