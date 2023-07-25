@@ -14,7 +14,6 @@ class OrderRepositoryImp(private val jpaRepository: SpringDataJpaOrderRepository
             Optional.of(ob.get().toOrder()) else Optional.empty()
     }
 
-    override fun save(order: Order) =
-        jpaRepository.save(OrderEntity.from(order)).toOrder()
+    override fun save(order: Order)= jpaRepository.save(OrderEntity.from(order)).toOrder()
 
 }
