@@ -33,14 +33,16 @@ class Order constructor(
     fun addOrderItem(productId: Long, price: BigDecimal, quantity: Double) {
         validateState()
         this.orderItems.add(OrderItem(productId, quantity, price))
-        this.totalAmount= this.totalAmount.add(price,m)
+        val itemTotalPrice=price.multiply(BigDecimal(quantity),m)
+        this.totalAmount= this.totalAmount.add(itemTotalPrice,m)
     }
 
     fun removeOrderItem(idProduct: Long) {
         validateState()
         val orderItem = getOrderItem(idProduct)
        this.orderItems.remove(orderItem)
-        this.totalAmount = this.totalAmount.subtract(orderItem.price,m)
+        val itemTotalPrice=orderItem.price.multiply(BigDecimal(orderItem.quantity),m)
+        this.totalAmount = this.totalAmount.subtract(itemTotalPrice,m)
     }
 
     private fun getOrderItem(idProduct: Long) = this.orderItems.stream().filter {

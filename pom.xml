@@ -17,6 +17,8 @@
 		<java.version>17</java.version>
 		<kotlin.version>1.8.22</kotlin.version>
 		<springdoc.version>2.0.4</springdoc.version>
+		<mockito.version>5.2.0</mockito.version>
+		<instancio.version>2.16.0</instancio.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -70,6 +72,20 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.mockito.kotlin</groupId>
+			<artifactId>mockito-kotlin</artifactId>
+			<version>3.2.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-suite-engine</artifactId>
+			<version>1.9.2</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

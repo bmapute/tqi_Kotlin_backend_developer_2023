@@ -22,14 +22,14 @@ data class OrderEntity(
     @JoinColumn(name = "order_id", referencedColumnName = "id")
     val orderItems: MutableList<OrderItemEntity>,
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
+    @Column( nullable = false)
     val status: OrderStatus,
     @Column(name = "create_at")
     val createAt: LocalDateTime? = LocalDateTime.now(),
-    @Column(nullable = false, name = "payment_type")
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     val paymentType: PaymentType,
-    @Column(nullable = false, name = "total_amount")
+    @Column(nullable = false)
     val totalAmount: BigDecimal
 ) {
     fun toOrder(): Order {

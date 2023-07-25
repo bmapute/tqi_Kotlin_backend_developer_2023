@@ -1,6 +1,7 @@
 package com.bmapute.jumarket.order.domain.service
 
 import com.bmapute.jumarket.order.domain.*
+import com.bmapute.jumarket.order.domain.exception.DomainException
 import com.bmapute.jumarket.order.domain.repository.OrderRepository
 import java.math.BigDecimal
 import java.util.*
@@ -12,11 +13,11 @@ class OrderDomainService(
     override fun createOrder(
         orderItems: MutableList<OrderItem>,
         orderStatus: OrderStatus?, paymentType: PaymentType
-    ) =
+    )=
         Order(
             UUID.randomUUID(), orderItems, orderStatus ?: OrderStatus.CREATED,
             null, paymentType
-        ).let {
+        ).also {
             repository.save(it)
         }
 
@@ -34,5 +35,5 @@ class OrderDomainService(
 
     private fun getOrder(id: UUID) =
         repository
-            .findById(id)?.orElseThrow { RuntimeException("Order with given id doesn't exist") }
+            .findById(id)?.orElseThrow { DomainException("Order with given id doesn't exist") }
 }

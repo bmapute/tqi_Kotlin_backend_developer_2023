@@ -38,7 +38,7 @@ class OrderResource(private val orderService: OrderService) {
         orderService.createOrder(
             orderItems = createOrderRequest.toOrderItem(),
             paymentType = createOrderRequest.paymentType
-        ).let {
+        ).also {
             ResponseEntity.created(URI("${IConstant.API_BASE_PATH}/${it}"))
                 .body(CreateOrderResponse.from(it))
         }
@@ -87,7 +87,7 @@ class OrderResource(private val orderService: OrderService) {
         description = "HTTP Status 201 OK"
     )
     @PatchMapping("/{orderId}/complete")
-    fun completeOrder(@PathVariable orderId: UUID) = orderService.completeOrder(orderId).let {
+    fun completeOrder(@PathVariable orderId: UUID) = orderService.completeOrder(orderId).also {
         ResponseEntity.ok().body(CompleteOrderResponse.from(it))
     }
 }
