@@ -37,7 +37,7 @@ No terminal/Console
 1. Faça um clone do projeto para sua máquina: `https://github.com/bmapute/tqi_Kotlin_backend_developer_2023.git`
 2. Entre na pasta raiz do projeto `cd`
 3. Executar o comando `docker-compose up` para subir a base de dados
-4. Executar o comando `./mvnw spring-boot:run -Dspring-boot.run.jvmArguments="-Xmx256m -Xms128m"`
+4. Executar o comando `./mvnw spring-boot:run`
 5. Para facilitar nos testes a aplicação disponibiliza swagger ui, para usar abir o navegador e passar a seguinte url `http://localhost:8080/swagger-ui/index.html`
 
 ****Visando facilitar a demostração da aplicação é  recomendado usar IDE como por exemplo o IntelliJ IDEA e executar o projeto através da IDE** **

@@ -11,7 +11,7 @@ class OrderHelper {
     companion object{
          fun completedOrder() = Order(
             id = UUID.randomUUID(),
-            orderItems = mutableListOf(OrderItem(1L, 4.0, BigDecimal.TEN)),
+            orderItems = mutableSetOf(OrderItem(1L, 4.0, BigDecimal.TEN)),
             status = OrderStatus.COMPLETED,
             null,
             paymentType = PaymentType.CASH
@@ -19,7 +19,7 @@ class OrderHelper {
 
          fun createdOrder() = Order(
             id = UUID.randomUUID(),
-            orderItems = mutableListOf(OrderItem(1L, 4.0, BigDecimal.TEN)),
+            orderItems = mutableSetOf(OrderItem(1L, 4.0, BigDecimal.TEN)),
             status = OrderStatus.CREATED,
             null,
             paymentType = PaymentType.CASH
