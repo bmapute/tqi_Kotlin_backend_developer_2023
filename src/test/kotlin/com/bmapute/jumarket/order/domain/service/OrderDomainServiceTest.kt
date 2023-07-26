@@ -38,7 +38,7 @@ class OrderDomainServiceTest {
     @Test
     fun `should create order and save it`() {
         val order = target.createOrder(
-            mutableListOf(OrderItem(1, 4.0, BigDecimal.TEN)),
+            mutableSetOf(OrderItem(1, 4.0, BigDecimal.TEN)),
             null, PaymentType.CASH
         )
 
@@ -83,7 +83,7 @@ class OrderDomainServiceTest {
         val order = spy(OrderHelper.createdOrder())
         val productId = order
             .orderItems
-            .get(0)
+            .iterator().next()
             .productId
 
         `when`(repository.findById(order.id)).thenReturn(Optional.of(order))
@@ -99,7 +99,7 @@ class OrderDomainServiceTest {
         val order = spy(OrderHelper.completedOrder())
         val productId = order
             .orderItems
-            .get(0)
+            .iterator().next()
             .productId
 
         `when`(repository.findById(order.id)).thenReturn(Optional.of(order))

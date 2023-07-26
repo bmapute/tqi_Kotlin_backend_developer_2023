@@ -39,7 +39,7 @@ class OrderTest {
     @Test
     fun `should remove product then update price`() {
         val order =OrderHelper.createdOrder()
-        val productId=order.orderItems.get(0).productId
+        val productId=order.orderItems.iterator().next().productId
         order.removeOrderItem(productId)
         assertEquals(BigDecimal.ZERO,order.totalAmount)
     }
