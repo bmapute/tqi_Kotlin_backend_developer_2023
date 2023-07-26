@@ -4,9 +4,8 @@ import com.bmapute.jumarket.order.domain.Category
 import jakarta.validation.constraints.NotBlank
 
 data class CategoryRequest(
-    val id: Long? = null,
     @field:NotBlank
-   private val name: String?
+    val name: String?
 ) {
-    fun toCategory() = Category(id = id ?: null, name = name)
+    fun toCategory() = Category( null, name = name)
 }

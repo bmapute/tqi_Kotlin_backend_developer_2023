@@ -10,7 +10,7 @@ import java.util.*
 
 interface OrderService {
 
-    fun createOrder(orderItems:MutableList<OrderItem>,
+    fun createOrder(orderItems:MutableSet<OrderItem>,
                     status: OrderStatus?=OrderStatus.CREATED,
                     paymentType: PaymentType):Order
     fun addOrderProduct(orderId: UUID, productId: Long,price: BigDecimal?,quantity: Double)
@@ -18,4 +18,6 @@ interface OrderService {
     fun completeOrder(id: UUID):Order
 
     fun deleteProduct(id: UUID, productId: Long)
+
+    fun orderDetail(id:UUID):Order
 }

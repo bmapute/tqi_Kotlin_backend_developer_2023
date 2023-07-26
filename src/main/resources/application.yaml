@@ -8,11 +8,17 @@ spring:
     generate-ddl: false
     hibernate:
       ddl-auto: none
+
   profiles:
     default: dev
 
   jackson:
     property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: non_null
+    deserialization:
+      FAIL_ON_IGNORED_PROPERTIES: false
+
+
 
 server:
   servlet:

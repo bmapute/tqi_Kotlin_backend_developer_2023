@@ -9,13 +9,13 @@ import java.util.*
 
 class Order constructor(
     id: UUID,
-    orderItems: MutableList<OrderItem>,
+    orderItems: MutableSet<OrderItem>,
     var status: OrderStatus,
     var createAt: LocalDateTime?,
     paymentType: PaymentType,
 ) {
      val id: UUID
-    var orderItems: MutableList<OrderItem>
+    var orderItems: MutableSet<OrderItem>
      var totalAmount: BigDecimal
      val paymentType: PaymentType
 

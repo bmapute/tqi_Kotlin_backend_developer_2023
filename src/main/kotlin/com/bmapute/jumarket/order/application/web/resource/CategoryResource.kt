@@ -56,7 +56,7 @@ class CategoryResource(private val service: CategoryService) {
         description = "HTTP Status 201 OK"
     )
     @PostMapping
-    fun createProduct(@Valid @RequestBody request: CategoryRequest) =
+    fun createCategory(@Valid @RequestBody request: CategoryRequest) =
         request.toCategory().run {
             service.create(this)
         }.let {
@@ -75,9 +75,9 @@ class CategoryResource(private val service: CategoryService) {
         description = "HTTP Status 200 SUCCESS"
     )
     @PutMapping("{id}")
-    fun updateProduct(@Valid @RequestBody request: CategoryRequest, @PathVariable("id") id: Long) =
+    fun updateCategory(@Valid @RequestBody request: CategoryRequest, @PathVariable("id") id: Long) =
         service.find(id)?.let {
-            service.update(id, it)
+            service.update(it.id!!, request.toCategory())
         }.let { category ->
             ResponseEntity.accepted().body(CategoryResponse.from(category!!))
         }

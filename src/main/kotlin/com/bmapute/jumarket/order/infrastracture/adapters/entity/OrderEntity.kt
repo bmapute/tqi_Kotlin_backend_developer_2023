@@ -20,7 +20,7 @@ data class OrderEntity(
         targetEntity = OrderItemEntity::class
     )
     @JoinColumn(name = "order_id", referencedColumnName = "id")
-    val orderItems: MutableList<OrderItemEntity>,
+    val orderItems: MutableSet<OrderItemEntity>,
     @Enumerated(EnumType.STRING)
     @Column( nullable = false)
     val status: OrderStatus,
@@ -34,7 +34,7 @@ data class OrderEntity(
 ) {
     fun toOrder(): Order {
         val convertedItems = orderItems
-            .mapTo(mutableListOf()) {
+            .mapTo(mutableSetOf()) {
                 OrderItem(
                     it.productId,
                     it.quantity, it.price
@@ -46,7 +46,7 @@ data class OrderEntity(
     companion object {
         fun from(order: Order): OrderEntity {
             val convertedItems = order.orderItems
-                .mapTo(mutableListOf()) {
+                .mapTo(mutableSetOf()) {
                     OrderItemEntity(
                         it.productId,
                         it.quantity, it.price

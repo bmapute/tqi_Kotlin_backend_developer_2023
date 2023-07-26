@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.bmapute.jumarket</groupId>
 	<artifactId>order</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>order</name>
 	<description>Desenvolvimento duma order API com Kotlin e Spring boot</description>
 	<properties>
@@ -19,6 +19,8 @@
 		<springdoc.version>2.0.4</springdoc.version>
 		<mockito.version>5.2.0</mockito.version>
 		<instancio.version>2.16.0</instancio.version>
+		<maven.compiler.target>16</maven.compiler.target>
+		<maven.compiler.source>17</maven.compiler.source>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -34,13 +36,12 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.fasterxml.jackson.module</groupId>
-			<artifactId>jackson-module-kotlin</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
+			<version>9.21.0</version>
 		</dependency>
+
+
 		<dependency>
 			<groupId>org.jetbrains.kotlin</groupId>
 			<artifactId>kotlin-reflect</artifactId>
@@ -122,6 +123,7 @@
 				</dependencies>
 			</plugin>
 		</plugins>
+
 	</build>
 
 </project>

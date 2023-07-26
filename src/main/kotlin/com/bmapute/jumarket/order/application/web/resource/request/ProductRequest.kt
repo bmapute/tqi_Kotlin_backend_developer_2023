@@ -1,5 +1,6 @@
 package com.bmapute.jumarket.order.application.web.resource.request
 
+import com.bmapute.jumarket.order.domain.Category
 import com.bmapute.jumarket.order.domain.Product
 import jakarta.validation.constraints.DecimalMin
 import jakarta.validation.constraints.Digits
@@ -9,7 +10,7 @@ import java.math.BigDecimal
 
 data class ProductRequest(
     @field:NotBlank
-    val name: String,
+    var name: String,
     @field:NotBlank
     val unitOfMeasurement: String,
     @field:Digits(integer = 4, fraction = 2)
@@ -20,5 +21,5 @@ data class ProductRequest(
 ){
     fun toProduct()=Product(name = name,
         unitOfMeasurement = unitOfMeasurement, price = price,
-        category = CategoryRequest(id = categoryId,null).toCategory() )
+        category = Category(id = categoryId,name=null) )
 }
