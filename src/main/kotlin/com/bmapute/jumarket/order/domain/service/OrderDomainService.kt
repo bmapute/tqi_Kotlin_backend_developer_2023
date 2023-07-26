@@ -11,7 +11,7 @@ class OrderDomainService(
     private val productService: ProductService
 ) : OrderService {
     override fun createOrder(
-        orderItems: MutableList<OrderItem>,
+        orderItems: MutableSet<OrderItem>,
         orderStatus: OrderStatus?, paymentType: PaymentType
     )=
         Order(
@@ -32,6 +32,8 @@ class OrderDomainService(
     override fun deleteProduct(id: UUID, productId: Long) {
         getOrder(id)?.apply { removeOrderItem(productId) }.let { repository.save(it!!) }
     }
+
+    override fun orderDetail(id: UUID): Order =getOrder(id)!!
 
     private fun getOrder(id: UUID) =
         repository

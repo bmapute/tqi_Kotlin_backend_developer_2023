@@ -10,6 +10,6 @@ data class CreateOrderRequest(
     @field:NotNull
     val paymentType: PaymentType
 ) {
-    fun toOrderItem()=orderItems.mapTo(mutableListOf()){it.toOrderItem()}
+    fun toOrderItem()=orderItems.mapTo(mutableSetOf()){it.toOrderItem()}
 
 }

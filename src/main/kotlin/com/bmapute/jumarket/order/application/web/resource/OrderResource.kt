@@ -90,4 +90,17 @@ class OrderResource(private val orderService: OrderService) {
     fun completeOrder(@PathVariable orderId: UUID) = orderService.completeOrder(orderId).also {
         ResponseEntity.ok().body(CompleteOrderResponse.from(it))
     }
+
+    @Operation(
+        summary = "Order Detail REST API",
+        description = "Is used to see details for specif order"
+    )
+    @ApiResponse(
+        responseCode = "200",
+        description = "HTTP Status 200 OK"
+    )
+    @GetMapping("/{orderId}/detail")
+    fun getOrderDetails(@PathVariable orderId: UUID) = orderService.orderDetail(orderId).also {
+        ResponseEntity.ok().body(CompleteOrderResponse.from(it))
+    }
 }

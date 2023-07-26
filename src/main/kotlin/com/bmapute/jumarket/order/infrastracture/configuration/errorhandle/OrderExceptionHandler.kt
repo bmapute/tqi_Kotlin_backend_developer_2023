@@ -21,13 +21,13 @@ class OrderExceptionHandler {
         )
             .let { ResponseEntity.status(700).body(it) }
 
-    @ExceptionHandler(Exception::class)
-    fun handlerException(ex: Exception) =
-        ErrorMessage(
-            HttpStatus.INTERNAL_SERVER_ERROR.value(),
-            Date(), ex.message
-        )
-            .let { ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(it) }
+//    @ExceptionHandler(Exception::class)
+//    fun handlerException(ex: Exception) =
+//        ErrorMessage(
+//            HttpStatus.INTERNAL_SERVER_ERROR.value(),
+//            Date(), ex.message
+//        )
+//            .let { ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(it) }
 
     @ExceptionHandler(MethodArgumentNotValidException::class)
     fun handlerMethodArgumentNotValid(ex: MethodArgumentNotValidException) {

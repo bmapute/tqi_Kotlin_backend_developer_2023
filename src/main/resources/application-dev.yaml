@@ -1,12 +1,13 @@
 spring:
-  jackson:
-    serialization:
-      indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/tqi_order
-    username: bmapute
+    url: jdbc:postgresql://localhost:5432/tqi_order1
+    username: bmaputeuser
     password: 12378(#
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
+
+#  flyway:
+##    mixed: false
+##    baseline-on-migrate: true
