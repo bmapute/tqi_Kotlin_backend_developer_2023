@@ -1,40 +1,3 @@
-#version: '3.2'
-#services:
-#  postgres-tqi-order:
-#    image: postgres:12-alpine
-#    environment:
-#      POSTGRES_USER: ${DB_USER}
-#      POSTGRES_DB: ${DB_NAME}
-#      POSTGRES_PASSWORD: ${DB_PASSWORD}
-#      ALLOW_IP_RANGE: 0.0.0.0/0
-#    ports:
-#      - "5432:5432"
-#    restart: always
-#    volumes:
-#      - pdb12:/var/lib/postgresql/data
-#    networks:
-#      - postgres-compose-network
-#
-#  api:
-#    container_name: api
-#    image: spring-boot-api-tutorial-img
-#    build:
-#      context: ./
-#      dockerfile: Dockerfile
-#    depends_on:
-#      - postgres-tqi-order
-#    ports:
-#      - 8080:8080
-#    restart: always
-#    networks:
-#      - postgres-compose-network
-#
-#volumes:
-#  pdb12:
-#networks:
-#  postgres-compose-network:
-#    driver: bridge
-
 version: '3.8'
 
 services:
@@ -43,13 +6,16 @@ services:
     environment:
       POSTGRES_USER: bmaputeuser
       POSTGRES_PASSWORD: 12378(#
-      POSTGRES_DB: tqi_order1
+      POSTGRES_DB: tqi_order
     ports:
       - "5432:5432"
     volumes:
-      - postgres-data12:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
     networks:
       - postgres-compose-network
+
+####Para subir a aplicação spring  com docker -> vai ser necessario fazer maven package porque o ficheiro
+#### Dockerfile esta vai pegar o jar gerado pelo maven no processo de package
 
 #  app:
 #    build: .
@@ -58,14 +24,14 @@ services:
 #    depends_on:
 #      - postgres
 #    environment:
-#      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/tqi_order1
+#      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/tqi_order
 #      SPRING_DATASOURCE_USERNAME: bmaputeuser
 #      SPRING_DATASOURCE_PASSWORD: 12378(#
 #    networks:
 #      - postgres-compose-network
 
 volumes:
-  postgres-data12:
+  postgres-data:
 networks:
   postgres-compose-network:
     driver: bridge
