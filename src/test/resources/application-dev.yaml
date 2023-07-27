@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/tqi_order_test
+    username: bmaputeuser
+    password: 12378(#
+    hikari:
+      maximum-pool-size: 1
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+#  flyway:
+##    mixed: false
+##    baseline-on-migrate: true
