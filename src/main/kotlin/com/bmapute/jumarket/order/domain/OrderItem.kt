@@ -15,16 +15,11 @@ data class OrderItem( val productId: Long,
         other as OrderItem
 
         if (productId != other.productId) return false
-        if (quantity != other.quantity) return false
-        if (price != other.price) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        var result = productId.hashCode()
-        result = 31 * result + quantity.hashCode()
-        result = 31 * result + price.hashCode()
-        return result
+        return productId.hashCode()
     }
 }
