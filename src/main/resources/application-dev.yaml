@@ -4,6 +4,13 @@ spring:
     url: jdbc:postgresql://localhost:5432/tqi_order1
     username: bmaputeuser
     password: 12378(#
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 10
+      idle-timeout: 60000
+      connection-test-query: 'select 1'
+      connection-timeout: 3000
+      max-lifetime: 180000
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
