@@ -17,18 +17,18 @@ services:
 ####Para subir a aplicação spring  com docker -> vai ser necessario fazer maven package porque o ficheiro
 #### Dockerfile esta vai pegar o jar gerado pelo maven no processo de package
 
-#  app:
-#    build: .
-#    ports:
-#      - "8080:8080"
-#    depends_on:
-#      - postgres
-#    environment:
-#      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/tqi_order
-#      SPRING_DATASOURCE_USERNAME: bmaputeuser
-#      SPRING_DATASOURCE_PASSWORD: 12378(#
-#    networks:
-#      - postgres-compose-network
+  app:
+    build: .
+    ports:
+      - "8082:8080"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/tqi_order
+      SPRING_DATASOURCE_USERNAME: bmaputeuser
+      SPRING_DATASOURCE_PASSWORD: 12378(#
+    networks:
+      - postgres-compose-network
 
 volumes:
   postgres-data:
